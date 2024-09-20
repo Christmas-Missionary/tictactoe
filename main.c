@@ -1,4 +1,5 @@
 #include "typedefs.h"
+#include "tictactoe.h"
 
 int main(void){
 
