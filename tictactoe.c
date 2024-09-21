@@ -8,17 +8,10 @@
 static char board [TICTACTOE_BOARD_AREA] =
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 
-const char * const ttt_board_layout = "1|2|3\n-----\n4|5|6\n-----\n7|8|9\n";
-/*
-1|2|3
------
-4|5|6
------
-7|8|9
+static const char ttt_board_layout [TTT_BOARD_LAYOUT_SIZE] = "1|2|3\n-----\n4|5|6\n-----\n7|8|9\n";
 
-*/
-
-static const uint64_t board_length = strlen(ttt_board_layout);
+/* external variables, in order, from tictactoe.h */
+/* end of external variables */
 
 enum ttt_error ttt_add_to_board(const uchar index, const char val){
     if (index >= TICTACTOE_BOARD_AREA){
@@ -36,4 +29,13 @@ enum ttt_error ttt_add_to_board(const uchar index, const char val){
 
 void ttt_reset_board(){
     memset(board, ' ', TICTACTOE_BOARD_AREA);
+}
+
+char * ttt_board_as_str(char * dest){
+    strcpy(dest, ttt_board_layout);
+    const uchar dest_indices [9] = {0, 2, 4, 12, 14, 16, 24, 26, 28};
+    for (uchar i = 0; i < 9; i++){
+        dest[dest_indices[i]] = board[i];
+    }
+    return dest;
 }
