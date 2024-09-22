@@ -37,3 +37,11 @@ char * ttt_board_as_str(char * dest){
     }
     return dest;
 }
+
+ttt_winner_indices ttt_check_for_winner(const char val){
+    ttt_winner_indices res = {-1, -1, -1};
+
+
+
+    return res;
+}
