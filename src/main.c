@@ -1,7 +1,8 @@
+#include <stdio.h>
+
 #include "typedefs.h"
 #include "tictactoe.h"
 #include "term.h"
-#include <stdio.h>
 
 int main(void){
     const struct termios oldt = get_termios();

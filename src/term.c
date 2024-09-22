@@ -1,6 +1,6 @@
-#include "term.h"
-
 #include <unistd.h> // STDIN_FILENO
+
+#include "term.h"
 
 struct termios get_termios(){
     struct termios res;
