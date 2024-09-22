@@ -3,18 +3,16 @@
 #include "typedefs.h"
 #include "tictactoe.h"
 
-#define TICTACTOE_BOARD_AREA 9
-
 static char board [TICTACTOE_BOARD_AREA] =
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 
-static const char ttt_board_layout [TTT_BOARD_LAYOUT_SIZE] = "1|2|3\n-----\n4|5|6\n-----\n7|8|9\n";
-
 /* external variables, in order, from tictactoe.h */
+const char ttt_board_layout [TICTACTOE_BOARD_LAYOUT_SIZE] =
+    "1|2|3\n-----\n4|5|6\n-----\n7|8|9\n";
 /* end of external variables */
 
-enum ttt_error ttt_add_to_board(const uchar index, const char val){
-    if (index >= TICTACTOE_BOARD_AREA){
+enum ttt_error ttt_add_to_board(const int32_t index, const char val){
+    if (index < 0 || index >= TICTACTOE_BOARD_AREA){
         return TTT_OUT_OF_BOUNDS;
     }
     if (val != 'X' && val != 'O'){
