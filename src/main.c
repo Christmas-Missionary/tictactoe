@@ -13,10 +13,10 @@ int main(void){
     }
 
     int32_t input = 0;
-    // int32_t turn = 1; // 1 is X, -1 is O.
     char char_turn = 'X';
 
     puts(ttt_board_layout);
+    puts("X goes first!");
 
     while (1){
         char board_format [TICTACTOE_BOARD_LAYOUT_SIZE];
@@ -26,14 +26,10 @@ int main(void){
             break;
         }
         if (input == 'r'){
-            ttt_reset_board();
-            puts("The board has been reset!");
-            puts(ttt_board_as_str(board_format));
-            char_turn = 'X';
-            continue;
+            goto reset;
         }
 
-        enum ttt_error error = ttt_add_to_board(input - '1', char_turn);
+        const enum ttt_error error = ttt_add_to_board(input - '1', char_turn);
 
         if (error == TTT_OUT_OF_BOUNDS){
             puts("That is not on the board!");
@@ -48,11 +44,26 @@ int main(void){
             continue;
         }
 
-        ttt_winner_indices indices = ttt_check_for_winner(char_turn);
-
+        const ttt_winner_indices indices = ttt_check_for_winner(char_turn);
 
         puts(ttt_board_as_str(board_format));
-        char_turn = (char_turn == 'X') ? 'O' : 'X';
+
+        if (indices.one == -1){
+            char_turn = (char_turn == 'X') ? 'O' : 'X';
+            continue;
+        }
+
+        printf("%c wins!\nPress 'r' to reset the board, or press anything else to quit.\n", char_turn);
+        input = getchar();
+        if (input != 'r'){
+            break;
+        }
+
+        reset:
+            ttt_reset_board();
+            puts("The board has been reset!\nX goes first!");
+            puts(ttt_board_as_str(board_format));
+            char_turn = 'X';
     }
 
     set_termios(&oldt);

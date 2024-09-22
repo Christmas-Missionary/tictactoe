@@ -39,9 +39,21 @@ char * ttt_board_as_str(char * dest){
 }
 
 ttt_winner_indices ttt_check_for_winner(const char val){
-    ttt_winner_indices res = {-1, -1, -1};
-
-
-
-    return res;
+    const ttt_winner_indices all [9] = {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+        {0, 4, 8},
+        {2, 4, 6},
+        {-1, -1, -1}
+    };
+    for (uchar i = 0; i < 8; i++){
+        if (val == board[all[i].one] && val == board[all[i].two] && val == board[all[i].three]){
+            return all[i];
+        }
+    }
+    return all[8];
 }
