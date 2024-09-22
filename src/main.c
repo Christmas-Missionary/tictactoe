@@ -1,5 +1,3 @@
-// #include <stdio.h>
-
 #include "typedefs.h"
 #include "tictactoe.h"
 #include "term.h"
@@ -27,6 +25,14 @@ int main(void){
         }
         if (input == 'r'){
             goto reset;
+        }
+        if (input == 't'){
+            printf("It is %c's turn.\n", char_turn);
+            continue;
+        }
+        if (input == 'b'){
+            puts(ttt_board_as_str(board_format));
+            continue;
         }
 
         const enum ttt_error error = ttt_add_to_board(input - '1', char_turn);
