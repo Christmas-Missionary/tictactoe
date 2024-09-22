@@ -20,10 +20,10 @@ typedef struct {
 extern const char ttt_board_layout [TICTACTOE_BOARD_LAYOUT_SIZE];
 /* end of external variables */
 
-
+// Adds a char to the board, returns an `ttt_error`.
 enum ttt_error ttt_add_to_board(const int32_t index, const char val);
 
-
+// Resets the board to spaces in the nine slots.
 void ttt_reset_board();
 
 // Formats the dest (and returns its pointer) with the board to be printed.
