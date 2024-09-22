@@ -3,6 +3,7 @@
 ################################
 *.pptx
 CMakeUserPresets.json
+CMakePresets.json
 CMakeNotes.txt
 
 ################################
