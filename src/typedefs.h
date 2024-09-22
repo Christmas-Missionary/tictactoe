@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
-// #include <stdbool.h>
+#include <stdbool.h>
 typedef uint8_t uchar;
 typedef int8_t schar;
 

@@ -5,15 +5,18 @@
 #include "term.h"
 
 int main(void){
+    // This comes first before any input.
     const struct termios oldt = get_termios();
     {
         const struct termios newt = turn_off_flags(oldt);
         set_termios(&newt);
     }
 
-    int32_t input = 0;
-    char char_turn = 'X';
+    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]");
+    int32_t input = getchar();
+    bool is_left_pad_enabled = (input == 'y');
 
+    char char_turn = 'X';
     puts(ttt_board_layout);
     puts("X goes first!");
 
@@ -36,7 +39,7 @@ int main(void){
             continue;
         }
 
-        const enum ttt_error error = ttt_add_to_board(input - '1', char_turn);
+        const enum ttt_error error = ttt_add_to_board(input_to_index(input, is_left_pad_enabled), char_turn);
 
         if (error == TTT_OUT_OF_BOUNDS){
             puts("That is not on the board!");

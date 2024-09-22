@@ -57,3 +57,20 @@ ttt_winner_indices ttt_check_for_winner(const char val){
     }
     return all[8];
 }
+
+int32_t input_to_index(const int32_t input, const bool is_left_pad_enabled){
+    if (is_left_pad_enabled){
+        switch (input){
+            case 'q': return 0;
+            case 'w': return 1;
+            case 'e': return 2;
+            case 'a': return 3;
+            case 's': return 4;
+            case 'd': return 5;
+            case 'z': return 6;
+            case 'x': return 7;
+            case 'c': return 8;
+        }
+    }
+    return (input >= '1' && input <= '9') ? (input - '1') : -1;
+}

@@ -30,7 +30,11 @@ void ttt_reset_board();
 // You must use a `char [TICTACTOE_BOARD_LAYOUT_SIZE]` for a proper format.
 char * ttt_board_as_str(char * dest);
 
+
 ttt_winner_indices ttt_check_for_winner(const char val);
+
+__attribute__ ((const))
+int32_t input_to_index(const int32_t input, const bool is_left_pad_enabled);
 
 
 #endif // _TICTACTOE_BACKEND
