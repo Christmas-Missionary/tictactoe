@@ -9,11 +9,8 @@ project(
     0.1
 )
 
-add_executable(
-    ${PROJECT_NAME}
-    main.c
-    tictactoe.c
-    term.c
+add_subdirectory(
+    src
 )
 
 set(
