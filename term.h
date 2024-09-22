@@ -1,0 +1,16 @@
+#ifndef _TICTACTOE_TERMIOS_SIMPLIFIED
+    #define _TICTACTOE_TERMIOS_SIMPLIFIED
+
+#include <termios.h> // termios, TCSANOW, ECHO, ICANON
+
+// returns the current settings of the terminal.
+struct termios get_termios();
+
+// returns a terminal with local flags off, You don't see what you type + getchar by char.
+__attribute__ ((const))
+struct termios turn_off_flags(struct termios term);
+
+// sets the terminal settings, use this to reset with old settings.
+void set_termios(const struct termios * term);
+
+#endif // _TICTACTOE_TERMIOS_SIMPLIFIED
