@@ -18,6 +18,7 @@ typedef struct {
 
 /* external variables, in order, needs tictactoe.c */
 extern const char ttt_board_layout [TICTACTOE_BOARD_LAYOUT_SIZE];
+extern const char ttt_both_boards_layout [65];
 /* end of external variables */
 
 // Adds a char to the board, returns an `ttt_error`.

@@ -12,12 +12,12 @@ int main(void){
         set_termios(&newt);
     }
 
-    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]");
+    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]\nq|w|e\n-----\na|s|d\n-----\nz|x|c\n");
     int32_t input = getchar();
     bool is_left_pad_enabled = (input == 'y');
 
     char char_turn = 'X';
-    puts(ttt_board_layout);
+    puts((is_left_pad_enabled) ? ttt_both_boards_layout : ttt_board_layout);
     puts("X goes first!");
 
     while (1){
@@ -35,7 +35,14 @@ int main(void){
             continue;
         }
         if (input == 'b'){
+            puts("\n");
             puts(ttt_board_as_str(board_format));
+            continue;
+        }
+        if (input == 'h'){
+            puts("\n");
+            puts((is_left_pad_enabled) ? ttt_both_boards_layout : ttt_board_layout);
+            puts("'esc' - quits the game.\n'r' - resets the board.\n't' - prints whos turn it is.\n'b' - prints the current board.\n'h' - prints this.");
             continue;
         }
 
@@ -63,7 +70,12 @@ int main(void){
             continue;
         }
 
-        printf("%c wins!\nPress 'r' to reset the board, or press anything else to quit.\n", char_turn);
+        if (indices.one == -2){
+            puts("It's a draw!");
+        } else {
+            printf("%c wins!\n", char_turn);
+        }
+        puts("Press 'r' to reset the board, or press anything else to quit.\n");
         input = getchar();
         if (input != 'r'){
             break;
@@ -71,7 +83,7 @@ int main(void){
 
         reset:
             ttt_reset_board();
-            puts("The board has been reset!\nX goes first!");
+            puts("\nThe board has been reset!\nX goes first!");
             puts(ttt_board_as_str(board_format));
             char_turn = 'X';
     }
