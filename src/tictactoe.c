@@ -44,6 +44,7 @@ char * ttt_board_as_str(char * dest){
 
 ttt_winner_indices ttt_check_for_winner(const char val){
     const ttt_winner_indices all [10] = {
+        // First 8 are winning indicies forming a straight line of 3
         {0, 1, 2},
         {3, 4, 5},
         {6, 7, 8},
@@ -52,8 +53,8 @@ ttt_winner_indices ttt_check_for_winner(const char val){
         {2, 5, 8},
         {0, 4, 8},
         {2, 4, 6},
-        {-1, -1, -1},
-        {-2, -2, -2}
+        {-1, -1, -1}, // none, continue playing
+        {-2, -2, -2} // draw
     };
     for (uchar i = 0; i < TICTACTOE_BOARD_AREA - 1; i++){
         if (val == board[all[i].one] && val == board[all[i].two] && val == board[all[i].three]){
@@ -80,4 +81,5 @@ int32_t input_to_index(const int32_t input, const bool is_left_pad_enabled){
         }
     }
     return (input >= '1' && input <= '9') ? (input - '1') : -1;
+    // ttt_add_to_board(-1, ...) immediately returns TTT_OUT_OF_BOUNDS
 }

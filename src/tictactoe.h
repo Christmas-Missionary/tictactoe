@@ -31,9 +31,10 @@ void ttt_reset_board();
 // You must use a `char [TICTACTOE_BOARD_LAYOUT_SIZE]` for a proper format.
 char * ttt_board_as_str(char * dest);
 
-
+// Checks for the winner, or if there is a draw when all 9 boxes are filled.
 ttt_winner_indices ttt_check_for_winner(const char val);
 
+// Converts the key input with whether or not the qweasdzxc keys are used, to the index of `board`.
 __attribute__ ((const))
 int32_t input_to_index(const int32_t input, const bool is_left_pad_enabled);
 

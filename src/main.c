@@ -12,23 +12,26 @@ int main(void){
         set_termios(&newt);
     }
 
-    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]\nq|w|e\n-----\na|s|d\n-----\nz|x|c\n");
-    int32_t input = getchar();
-    bool is_left_pad_enabled = (input == 'y');
+    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]\nEach key corresponds to a spot on the board.\nq|w|e\n-----\na|s|d\n-----\nz|x|c\n");
 
+    // mutable state in main()
+    bool is_left_pad_enabled = (getchar() == 'y');
     char char_turn = 'X';
+    char board_format [TICTACTOE_BOARD_LAYOUT_SIZE];
+
     puts((is_left_pad_enabled) ? ttt_both_boards_layout : ttt_board_layout);
     puts("X goes first!");
 
-    while (1){
-        char board_format [TICTACTOE_BOARD_LAYOUT_SIZE];
-        input = getchar();
+    while (true){
+        const int32_t input = getchar();
 
+        // These are called guard clauses.
+        // They filter certain inputs while preventing nested if-statements.
         if (input == '\x1b'){
             break;
         }
         if (input == 'r'){
-            goto reset;
+            goto reset; // This is the only goto used.
         }
         if (input == 't'){
             printf("It is %c's turn.\n", char_turn);
@@ -42,7 +45,7 @@ int main(void){
         if (input == 'h'){
             puts("\n");
             puts((is_left_pad_enabled) ? ttt_both_boards_layout : ttt_board_layout);
-            puts("'esc' - quits the game.\n'r' - resets the board.\n't' - prints whos turn it is.\n'b' - prints the current board.\n'h' - prints this.");
+            puts("'esc' - quits the game.\n'r' - resets the board.\n't' - prints whose turn it is.\n'b' - prints the current board.\n'h' - prints this.");
             continue;
         }
 
@@ -76,8 +79,7 @@ int main(void){
             printf("%c wins!\n", char_turn);
         }
         puts("Press 'r' to reset the board, or press anything else to quit.\n");
-        input = getchar();
-        if (input != 'r'){
+        if (getchar() != 'r'){
             break;
         }
 

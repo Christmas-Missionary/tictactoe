@@ -1,4 +1,5 @@
 #include <unistd.h> // STDIN_FILENO
+// Windows issue
 
 #include "term.h"
 
