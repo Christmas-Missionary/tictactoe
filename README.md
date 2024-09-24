@@ -3,7 +3,8 @@
 1. cd to the `src` folder. This folder should include .c files, .h files, and a CMakeLists.txt. 
 
 		src % ls
-		CMakeLists.txt  main.c     term.c     term.h     tictactoe.c     tictactoe.h     typedefs.h
+		CMakeLists.txt  term.c          tictactoe.c     ttt_config.h
+		main.c          term.h          tictactoe.h     typedefs.h
     
 
 2. Type a command to your compiler.
