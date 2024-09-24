@@ -12,7 +12,10 @@ int main(void){
         set_termios(&newt);
     }
 
-    puts("Would you like to enable inputs for qweasdzxc? [y/anything else]\nEach key corresponds to a spot on the board.\nq|w|e\n-----\na|s|d\n-----\nz|x|c\n");
+    puts(
+ "Would you like to enable inputs for qweasdzxc? [y/anything else]\
+\nEach key corresponds to a spot on the board.\nq|w|e\n-----\na|s|d\n-----\nz|x|c\n"
+        );
 
     // mutable state in main()
     bool is_left_pad_enabled = (getchar() == 'y');
@@ -42,10 +45,27 @@ int main(void){
             puts(ttt_board_as_str(board_format));
             continue;
         }
+        if (input == 'l'){
+            if (is_left_pad_enabled){
+                is_left_pad_enabled = false;
+                puts("Left number pad has been disabled.");
+            } else {
+                is_left_pad_enabled = true;
+                puts("Left number pad has been enabled.");
+            }
+            continue;
+        }
         if (input == 'h'){
             puts("\n");
             puts((is_left_pad_enabled) ? ttt_both_boards_layout : ttt_board_layout);
-            puts("'esc' - quits the game.\n'r' - resets the board.\n't' - prints whose turn it is.\n'b' - prints the current board.\n'h' - prints this.");
+            puts(
+ "'esc' - quits the game.\
+\n'r' - resets the board.\
+\n't' - prints whose turn it is.\
+\n'b' - prints the current board.\
+\n'l' - toggles usage of left number pad, or the qweasdzxc keys.\
+\n'h' - prints this."
+                );
             continue;
         }
 
