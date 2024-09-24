@@ -27,8 +27,17 @@
 
 Something about visual studio...  
 
-Also, since Windows doesn't have support for term.h, you are allowed to only compile `main.c` and `tictactoe.c`. `term.c` will be fully blank.  
-Backspaces won't work!
+Also, since Windows doesn't have support for term.h, `term.c` will be fully blank, and thus, not be needed for the compilation.  
+Only `main.c` and `tictactoe.c` will be needed.  
+Backspaces still won't work!
+
+# How to run
+
+Type this command if compilation worked:  
+`./tictactoe`  
+If on windows:  
+`./tictactoe.exe`  
+Or just double click on it I guess.
 
 
 # Misc
@@ -37,5 +46,5 @@ Backspaces won't work!
 
 * If there is something wrong, feel free to report an issue detailing what happened, including any warnings or errors. I have not tested this on Windows with MSVC at all, and I don't feel like setting up a VM. Any reports of bugs or compilation errors will be much appreciated.
 
-* I originally planned on having the build instructions be in regards to CMake, but due to this repo only having three implementation files (main.c, tictactoe.c, term.c), it was overkill. I have decided to commit CMakeLists.txt and CMakePresets.json as files that helped me build for debugging/release.
+* I originally planned on having the build instructions be in regards to CMake, but due to this repo only having three implementation files (main.c, tictactoe.c, term.c), it was overkill. Here are CMakeLists.txt and CMakePresets.json, which helped me build for debugging.
 
