@@ -2,15 +2,21 @@
 
 #include "typedefs.h"
 #include "tictactoe.h"
+
+#include "ttt_config.h"
+#ifdef TTT_SUPPORTS_TERMIOS
 #include "term.h"
+#endif
 
 int main(void){
     // This comes first before any input.
+    #ifdef TTT_SUPPORTS_TERMIOS
     const struct termios oldt = get_termios();
     {
         const struct termios newt = turn_off_flags(oldt);
         set_termios(&newt);
     }
+    #endif
 
     puts(
  "Would you like to enable inputs for qweasdzxc? [y/anything else]\
@@ -109,7 +115,8 @@ int main(void){
             puts(ttt_board_as_str(board_format));
             char_turn = 'X';
     }
-
+    #ifdef TTT_SUPPORTS_TERMIOS
     set_termios(&oldt);
+    #endif
     return 0;
 }

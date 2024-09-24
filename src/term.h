@@ -1,3 +1,6 @@
+#include "ttt_config.h"
+#ifdef TTT_SUPPORTS_TERMIOS
+
 #ifndef _TICTACTOE_TERMIOS_SIMPLIFIED
     #define _TICTACTOE_TERMIOS_SIMPLIFIED
 
@@ -16,3 +19,5 @@ struct termios turn_off_flags(struct termios term);
 void set_termios(const struct termios * term);
 
 #endif // _TICTACTOE_TERMIOS_SIMPLIFIED
+
+#endif
