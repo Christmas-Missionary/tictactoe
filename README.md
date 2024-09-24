@@ -27,3 +27,10 @@
 
 Something about visual studio...
 
+
+# Misc
+
+I originally planned on having the build instructions be in regards to CMake, but due to this repo only having  three implementation files (main.c, tictactoe.c, term.c), it was overkill.  
+
+I have decided to commit CMakeLists.txt and CMakePresets.json as files that helped me build for debugging/release.
+

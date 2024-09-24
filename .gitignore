@@ -3,7 +3,6 @@
 ################################
 *.pptx
 CMakeUserPresets.json
-CMakePresets.json
 CMakeNotes.txt
 tictactoe
 
